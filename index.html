@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 4th Anniversary</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5a623, #f560a2);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-y: auto; /* Menambahkan fitur scroll */
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            margin-top: 20px; /* Menambah margin atas agar lebih rapi */
+            margin-bottom: 20px; /* Agar ada ruang di bawah */
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .heart {
+            color: #ff3366;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .message {
+            font-style: italic;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 1rem;
+            color: #ffebee;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background-color: #ff3366;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+            animation: fadeInUp 2.5s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #f560a2;
+        }
+
+        .photo-container {
+            margin: 30px 0;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .photo-container img {
+            width: 50%; /* Mengatur ukuran gambar menjadi 50% */
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Notifikasi Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .modal-content .modal-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content .modal-btn:hover {
+            background-color: #f560a2;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy 4th Anniversary!</h1>
+        <div class="heart">❤️</div>
+        <p>Four amazing years have passed, and I still feel the same love and excitement when I’m with you as I did from the very beginning.</p>
+
+        <div class="photo-container">
+            <!-- Foto yang sudah kamu unggah -->
+            <img src="IMG_20220615_153743.jpg" alt="Our Photo">
+        </div>
+
+        <p class="message">Here’s to many more years filled with love, laughter, and unforgettable moments together! 💖</p>
+        <a href="#" class="btn" onclick="openFirstModal()">Ketuk untuk interaksi</a>
+
+        <div class="footer">- Your Love -</div>
+    </div>
+
+    <!-- Modal pertama untuk pertanyaan pertama -->
+    <div id="loveModal" class="modal">
+        <div class="modal-content">
+            <h2>Apakah kamu sayang sama aku?</h2>
+            <button class="modal-btn" onclick="handleFirstAnswer()">Iya</button>
+            <button class="modal-btn" onclick="handleFirstAnswer()">Yes</button>
+        </div>
+    </div>
+
+    <!-- Modal kedua untuk pertanyaan kedua -->
+    <div id="secondModal" class="modal">
+        <div class="modal-content">
+            <h2>Apa kamu mau kita bersama terus?</h2>
+            <button class="modal-btn" onclick="handleSecondAnswer()">Iya dong</button>
+            <button class="modal-btn" onclick="handleSecondAnswer()">Mau banget</button>
+        </div>
+    </div>
+
+    <!-- Modal ketiga untuk pertanyaan maaf -->
+    <div id="thirdModal" class="modal">
+        <div class="modal-content">
+            <h2>Maafin aku ya udah bikin kamu sedih, kita baikan yuu?</h2>
+            <button class="modal-btn" onclick="handleThirdAnswer(true)">Yu baikann</button>
+            <button class="modal-btn" onclick="handleThirdAnswer(false)">Aku msh butuh waktu</button>
+        </div>
+    </div>
+
+    <!-- Modal keempat untuk pertanyaan temenin -->
+    <div id="fourthModal" class="modal">
+        <div class="modal-content">
+            <h2>Aku temenin kamu terus bole?</h2>
+            <button class="modal-btn" onclick="handleFourthAnswer(true)">Iya bole, temenin aku terus yaa</button>
+            <button class="modal-btn" onclick="handleFourthAnswer(false)">Bole kok, tapi aku agak butuh waktu lama gpp yaa</button>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk membuka modal pertama
+        function openFirstModal() {
+            document.getElementById('loveModal').style.display = 'flex';
+        }
+
+        // Fungsi untuk menangani jawaban pertama
+        function handleFirstAnswer() {
+            document.getElementById('loveModal').style.display = 'none';
+            alert("Aku juga sayang sama kamu! ❤️");
+            setTimeout(function() {
+                document.getElementById('secondModal').style.display = 'flex';
+            }, 500); // Tunda sebentar sebelum membuka modal kedua
+        }
+
+        // Fungsi untuk menangani jawaban kedua
+        function handleSecondAnswer() {
+            document.getElementById('secondModal').style.display = 'none';
+            alert("Aku juga mau kita bersama terus! ❤️");
+            setTimeout(function() {
+                document.getElementById('thirdModal').style.display = 'flex';
+            }, 500); // Membuka modal ketiga
+        }
+
+        // Fungsi untuk menangani jawaban ketiga (pertanyaan maaf)
+        function handleThirdAnswer(forgive) {
+            document.getElementById('thirdModal').style.display = 'none';
+            if (forgive) {
+                alert("Yay, kita baikan! ❤️");
+            } else {
+                alert("Aku paham, aku akan menunggu sampai kamu siap.");
+            }
+            setTimeout(function() {
+                document.getElementById('fourthModal').style.display = 'flex';
+            }, 500); // Membuka modal keempat
+        }
+
+        // Fungsi untuk menangani jawaban keempat (pertanyaan temenin)
+        function handleFourthAnswer(accept) {
+            document.getElementById('fourthModal').style.display = 'none';
+            if (accept) {
+                alert("Aku akan temenin kamu terus! ❤️");
+            } else {
+                alert("Gpp, aku akan menunggu dan temenin kamu kapan pun kamu siap.");
+            }
+        }
+    </script>
+</body>
+</html>
